@@ -9,7 +9,7 @@ import webpack from 'gulp-webpack';
 import webpackConfig from './webpack.config.babel.js';
 
 function build() {
-  gulp.src('src/js/*.js')
+  gulp.src(['src/js/*.js', 'src/css/*.scss'])
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('dist'));
 }
@@ -24,6 +24,9 @@ gulp.task('es6:watch', () => {
       })
       .pipe(gulp.dest('dist/js'));
       */
+    build();
+  });
+  gulp.watch('src/css/*.scss', (event) => {
     build();
   });
 });
